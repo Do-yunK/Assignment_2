@@ -46,7 +46,10 @@ function showToast(message, anchorElement) {
 }
 
 toggleImages.forEach((element, index) => {
-    element.addEventListener('click', () => showToast(`Meow ${index + 1}`, element));
+    element.addEventListener('click', () => {
+        const message = element.dataset.toast?.trim() || `Meow ${index + 1}`;
+        showToast(message, element);
+    });
 });
 
 toggleButton.addEventListener('click', () => {
