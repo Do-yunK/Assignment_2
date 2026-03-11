@@ -5,14 +5,24 @@ document.documentElement.addEventListener('mousemove', (e) => {
 });
 
 const toggleButton = document.getElementById("toggleButton");
+const onSwitchImage = "images/Offswitch.svg";
+const offSwitchImage = "images/Onswitch.svg";
+
 toggleButton.addEventListener('click', () => {
     if (flashlight.style.display === 'none') {
         flashlight.style.display = "block";
-        toggleButton.textContent = "Switch ON";
+        toggleButton.src = onSwitchImage;
     }
     else {
         flashlight.style.display = "none";
-        toggleButton.textContent = "Switch OFF";
+        toggleButton.src = offSwitchImage;
+    }
+});
+
+toggleButton.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleButton.click();
     }
 });
 
